@@ -36,14 +36,15 @@ class _MyHomePageState extends State<MyHomePage>
   int _tabIndex = 0; // 默认选中首页
   PageController _pageController = new PageController();
   BottomNavigationBar bottomNavigationBar;
+  Scaffold scaffold;
 
 
   final List<StatefulWidget> _pages = [
-    new HomePage(),
-    new GroupPage(),
-    new UserPage(),
-    new MessagePage(),
-    new UserPage(),
+     HomePage(),
+     GroupPage(),
+     UserPage(),
+     MessagePage(),
+     UserPage(),
   ];
   List<NavigationIconView> _bottomNavigations;
 
@@ -53,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage>
       fit: StackFit.loose,
       overflow: Overflow.visible,
       children: <Widget>[
-        new Scaffold(
+    scaffold=new Scaffold(
 
           body: new PageView.builder(
             controller: _pageController,
@@ -65,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage>
             },
             itemCount: _pages.length,
           ),
-          bottomNavigationBar: new BottomNavigationBar(
+          bottomNavigationBar: bottomNavigationBar = new BottomNavigationBar(
             items: _bottomNavigations.map((NavigationIconView item) =>
             item.item).toList(),
             currentIndex: _tabIndex,
@@ -83,6 +84,7 @@ class _MyHomePageState extends State<MyHomePage>
         Align(
           alignment: Alignment.bottomCenter,
           child: Material(
+            color: Colors.transparent,
             child: InkWell(
               child: new Container(
                 child: new Image.asset(
@@ -113,34 +115,34 @@ class _MyHomePageState extends State<MyHomePage>
     _bottomNavigations = [
       new NavigationIconView(
           icon: new Image.asset(
-            "images/ic_tabbar_home_nor.png", width: 30.0, height: 30.0,),
+            "images/ic_tabbar_home_nor.png", width: 25.0, height: 25.0,),
           activeIcon: new Image.asset(
-            "images/ic_tabbar_home_sel.png", width: 30.0, height: 30.0,),
+            "images/ic_tabbar_home_sel.png", width: 25.0, height: 25.0,),
           title: new Text("咸鱼",),
           vsync: this),
       new NavigationIconView(
           icon: new Image.asset(
-            "images/ic_tabbar_group_nor.png", width: 30.0, height: 30.0,),
+            "images/ic_tabbar_group_nor.png", width: 25.0, height: 25.0,),
           activeIcon: Image.asset(
-            "images/ic_tabbar_group_sel.png", width: 30.0, height: 30.0,),
+            "images/ic_tabbar_group_sel.png", width: 25.0, height: 25.0,),
           title: new Text("鱼塘"),
           vsync: this),
       new NavigationIconView(
-          icon: new Icon(null, size: 30.0,),
+          icon: new Icon(null, size: 25.0,),
           title: new Text("发布"),
           vsync: this),
       new NavigationIconView(
           icon: new Image.asset(
-            "images/ic_tabbar_message_nor.png", width: 30.0, height: 30.0,),
+            "images/ic_tabbar_message_nor.png", width: 25.0, height: 25.0,),
           activeIcon: Image.asset(
-            "images/ic_tabbar_message_sel.png", width: 30.0, height: 30.0,),
+            "images/ic_tabbar_message_sel.png", width: 25.0, height: 25.0,),
           title: new Text("消息"),
           vsync: this),
       new NavigationIconView(
           icon: new Image.asset(
-            "images/ic_tabbar_my_nor.png", width: 30.0, height: 30.0,),
+            "images/ic_tabbar_my_nor.png", width: 25.0, height: 25.0,),
           activeIcon: Image.asset(
-            "images/ic_tabbar_my_sel.png", width: 30.0, height: 30.0,),
+            "images/ic_tabbar_my_sel.png", width: 25.0, height: 25.0,),
           title: new Text("我的"),
           vsync: this),
     ];
