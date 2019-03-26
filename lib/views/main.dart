@@ -4,7 +4,9 @@ import 'package:idlefish_demo/utils/Animation.dart';
 import 'package:idlefish_demo/views/group/GroupPage.dart';
 import 'package:idlefish_demo/views/home/HomePage.dart';
 import 'package:idlefish_demo/views/message/MessagePage.dart';
+import 'package:idlefish_demo/views/release/ReleaseDialog.dart';
 import 'package:idlefish_demo/views/user/UserPage.dart';
+import 'package:idlefish_demo/views/widget/Animation.dart';
 import 'package:idlefish_demo/views/widget/NavigationIconView.dart';
 
 void main() => runApp(new MyApp());
@@ -45,6 +47,7 @@ class _MyHomePageState extends State<MyHomePage>
      UserPage(),
      MessagePage(),
      UserPage(),
+//     AnimationPage(),
   ];
   List<NavigationIconView> _bottomNavigations;
 
@@ -152,20 +155,27 @@ class _MyHomePageState extends State<MyHomePage>
    * 中间凸起菜单
    */
   void _onCenterTap() {
-    Navigator.of(context).push(
-      new PageRouteBuilder(
-          pageBuilder: (BuildContext context, Animation animation,
-              Animation secondaryAnimation) {
-            return new HomePage();
-          },
-          transitionsBuilder: (BuildContext context,
-              Animation<double> animation,
-              Animation<double> secondaryAnimation,
-              Widget child,) {
-            return AnimUtils.createTransition(animation, child);
-          }
-      ),
+    showDialog(
+        context: context,
+        builder: (context){
+          String label = 'test';
+          return new ReleaseDialog();
+        }
     );
+//    Navigator.of(context).pop(
+//      new PageRouteBuilder(
+//          pageBuilder: (BuildContext context, Animation animation,
+//              Animation secondaryAnimation) {
+//            return new HomePage();
+//          },
+//          transitionsBuilder: (BuildContext context,
+//              Animation<double> animation,
+//              Animation<double> secondaryAnimation,
+//              Widget child,) {
+//            return AnimUtils.createTransition(animation, child);
+//          }
+//      ),
+//    );
   }
 
   void _onPageChanged(int index) {

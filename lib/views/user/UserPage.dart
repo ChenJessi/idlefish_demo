@@ -60,10 +60,11 @@ class _UserPageState extends State<UserPage>
         .padding
         .top;
     return new Scaffold(
-      body: new RefreshIndicator(
-        onRefresh: () {},
-        child: _userList(),
-      ),
+      body: _userList(),
+//      body: new RefreshIndicator(
+//        onRefresh: () {},
+//        child: _userList(),
+//      ),
     );
   }
 
@@ -79,15 +80,14 @@ class _UserPageState extends State<UserPage>
           return _topLayout();
         } else if (index == 1) {
           return _communicationLayout();
+        }else if (index == 2 || index == 12 || index == 19 || index == 21) {
+          return new Container(height: 15.0, color: ColorsResource.white1);
+        } else if (index < _menuTitle.length + 5) {
+          int itemIndex = index < 12 ? index - 3 : (index < 19
+              ? index - 4
+              : index - 5);
+          return _buildItem(itemIndex);
         }
-//        else if (index == 2 || index == 12 || index == 19 || index == 21) {
-//          return new Container(height: 15.0, color: ColorsResource.white1);
-//        } else if (index < _menuTitle.length + 5) {
-//          int itemIndex = index < 12 ? index - 3 : (index < 19
-//              ? index - 4
-//              : index - 5);
-//          return _buildItem(itemIndex);
-//        }
       },
     );
   }
@@ -251,6 +251,7 @@ class _UserPageState extends State<UserPage>
             ),
           ],
         ),
+        onTap: _userItemTap,
       ),
     );
   }
@@ -280,6 +281,12 @@ class _UserPageState extends State<UserPage>
   void _fansTap() {
   }
 
+  /**
+   * 我的
+   */
+  void _userItemTap(){
+
+  }
   // TODO: implement wantKeepAlive
   @override
   bool get wantKeepAlive => true;
